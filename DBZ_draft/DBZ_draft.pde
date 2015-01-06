@@ -1,4 +1,8 @@
-
+///////////////////////////////
+//      This is where        //
+//     the magic happens     //
+//   Ki Blast Specififcations//
+///////////////////////////////
 class ki {
   PVector loc, vel, gravity;
   float sz;
@@ -14,7 +18,7 @@ class ki {
   }
   void display() { //gives ball life(makes visible)//
     PImage kiblast;
-    kiblast= loadImage("kiblast.gif");
+    kiblast= loadImage("kiblast.gif"); // creates a single ki blast
     image(kiblast, loc.x, loc.y, sz, sz);
   }
   void move() {//teaches the ball how to walk (makes ball move)
@@ -28,7 +32,7 @@ class ki {
       vel.y *= -.7;
     }
   }
-  void devour(BlackHole darkmatter) {
+  void devour(BlackHole darkmatter) { //Gravitational properties for ki blast
     gravity = PVector.sub(darkmatter.loc, loc);
     gravity.setMag(1);
   }

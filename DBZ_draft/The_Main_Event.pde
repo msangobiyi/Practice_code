@@ -1,7 +1,8 @@
-////////////////////////////////
-//         This is where      //
-//        the magic happens   //
-////////////////////////////////
+///////////////////////////////
+//      Particles Systems    //
+//        Ineteract here     //
+///////////////////////////////
+//initializes variables
 ArrayList<ki> ki = new ArrayList<ki>();
 BlackHole create;
 int limit= 150;
@@ -9,15 +10,13 @@ int namekposition;
 PImage img;
 PImage namek;
 PImage dn;
-//ki[] balls = new ki[150];//
-
 void setup() {
   size(800, 800);
   colorMode(HSB, 360, 100, 100, 100);
-  img= loadImage("goku.png");
-  namek= loadImage("Namek.jpg");
-  dn= loadImage("destroyednamek.jpg");
-  dn.resize(displayWidth/2, displayHeight);
+  img= loadImage("goku.png"); //defines variable for goku
+  namek= loadImage("Namek.jpg"); //defines variable for namek
+  dn= loadImage("destroyednamek.jpg"); //defines variable for destroyed namek
+  dn.resize(displayWidth/2, displayHeight); //makes image appropriate size for desired window
   namek.resize(displayWidth/2, displayHeight); // creates a suitable size for the desired background 
   create = new BlackHole();
   namekposition=0;
@@ -29,7 +28,7 @@ void draw() {
   if (mousePressed) {
     ki.add(new ki(25, random(.01, 5))) ;
   }
-  if (ki.size() >= limit) {
+  if (ki.size() >= limit) { // removes ki blast if the ki blast is touching the blackhole
     ki.remove(0);
   } 
 
@@ -48,16 +47,15 @@ void draw() {
       create.drop();
     }
   }
-
+  create.display(); // creates the objects in the display portion
   if (create.y>=height/2) {
 
 
-    namekposition= 10000;
-    image(dn, 0, 0);
+    namekposition= 10000; // Moves image off of screen so alternate image can be displayed
+    image(dn, 0, 0); // Creates the Destroyed Namek image
 
     noLoop();
     //create.sz2=800;
   }
-  create.display();
 }
 
